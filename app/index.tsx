@@ -1,12 +1,16 @@
+import { Redirect } from "expo-router";
 import "../global.css";
-// ... rest of your imports and code
-
-import { Text, View } from "react-native";
+import { useAuth } from "@clerk/clerk-expo";
 
 export default function Home() {
-  return (
-    <View className="flex-1 items-center justify-center bg-white">
-      <Text className="text-slate-800 text-2xl font-bold underline">Hello Tailwind!</Text>
-    </View>
-  );
+  const { isSignedIn, isLoaded } = useAuth();
+  // Wait for auth to be loaded before rendering
+  if (!isLoaded) {
+    return null;
+  }
+  // Check authentication status
+  if (!isSignedIn) {
+    return <Redirect href="/sign-in" />;
+  }
+  return <Redirect href={"/(tabs)"} />;
 }
