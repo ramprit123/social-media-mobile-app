@@ -9,8 +9,8 @@ export default function Home() {
     return null;
   }
   // Check authentication status
-  // if (!isSignedIn) {
-  //   return <Redirect href="/sign-in" />;
-  // }
+  if (!isSignedIn) {
+    return <Redirect href="/sign-in" />;
+  }
   return <Redirect href={"/(tabs)"} />;
 }

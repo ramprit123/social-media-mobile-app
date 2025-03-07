@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities; 
+@tailwind utilities;
+
+@layer {
+  .button {
+    @apply flex-row items-center bg-blue-500 py-3 rounded-lg w-full justify-center mb-5;
+  }
+}
